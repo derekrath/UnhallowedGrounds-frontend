@@ -1,0 +1,16 @@
+Colors:
+
+Black Bean: #403330
+Bewitched: #582f2f
+Falcon Brown: #645145
+Rojo Marron: #4b3029
+Townsend Harbor Brown: #634543
+Fresh Brew: #684f46
+Onyx: #353434
+Wrought Iron: #494a4b
+Tulsa Twilight: #3b3339
+Tricorn Black: #2F2F30
+Night Watch: #303636
+Greenblack: #373A3A
+Modified Greenblack 1: #0F1212
+Modified Greenblack 2: #131414
