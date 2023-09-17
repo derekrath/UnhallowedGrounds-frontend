@@ -1,4 +1,56 @@
-.custom-badge {
-    background-color: #582f2f;
-    color: white; /* Text color */
+/* .Toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  padding: 0 20px;
+  background-color: black;
+  color: white;
+  z-index: 1000;
+} */
+
+/* .NavLinks {
+  display: flex;
+  gap: 20px;
+} */
+
+@media (max-width: 700px) {
+  .NavLinks {
+    flex-direction: column;
+    justify-content: center;
+    /* gap: 10px; */
   }
+  .Toolbar {
+    flex-direction: column;
+    justify-content: center;
+    /* gap: 10px; */
+  }
+}
+
+.custom-badge {
+  background-color: #582f2f; /* Dot color */
+  color: white; /* Text color */
+}
+
+  /* .custom-badge {
+    background-color: #582f2f;
+    color: transparent;
+    position: relative;
+} */
+
+/* .custom-badge::after {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: #582f2f; 
+    border-radius: 50%;
+    top: 0;
+    right: 0;
+} */
+

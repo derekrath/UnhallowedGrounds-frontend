@@ -2,6 +2,9 @@ import { useCookies } from 'react-cookie';
 import { createContext, useEffect, useState, useCallback, useMemo } from 'react';
 // import { useCookies } from 'react-cookie';
 
+const productImages = require.context("./images/coffeebags", false, /\.(png)$/);
+const imageFiles = productImages.keys().map(productImages);
+
 const axios = require('axios');
 
 export const AppContext = createContext(null);
@@ -21,6 +24,7 @@ function AppProvider({ children }) {
 
   // products context:
   const [productList, setProductList] = useState([])
+  const [promotionsList, setPromotionsList] = useState([])
 
   // user context:
   const [userData, setUserData] = useState('')
@@ -32,14 +36,62 @@ function AppProvider({ children }) {
   const [showCreateUserSuccess, setShowCreateUserSuccess] = useState(false);
   const [messageText, setMessageText] = useState('')
 
-  useEffect(() => {
-    let fakeProducts = [
-      { name: `MatterMost`, description: `IL2 Chat platform`, url: `https://chat.il2.dso.mil/`, icon_url: `${host}/images/MatterMost.svg`, role: '/Platform One/Party Bus/IL2/IL2-Atlassian', icon_alt: 'MatterMost', icon_alt_grey: 'MatterMost_Grey', icon_grey_alt: `${host}/images/MatterMost_Grey.svg` },
-      { name: `Jira`, description: `IL2 Ticket System`, url: `https://jira.il2.dso.mil/secure/Dashboard.jspa`, icon_url: `${host}/images/Jira.svg`, role: '/Platform One/Party Bus/IL2/IL2-Atlassian', icon_alt: 'Jira', icon_grey_alt: 'Jira_Grey', icon_url_grey: `${host}/images/Jira_Grey.svg` },
-      { name: `Confluence`, description: `Collaboration platform`, url: `https://confluence.il2.dso.mil/#all-updates`, icon_url: `${host}/images/Confluence.svg`, role: '/Platform One/Party Bus/IL2/IL2-Atlassian', icon_alt: 'Confluence', icon_grey_alt: 'Confluence_Grey', icon_url_grey: `${host}/images/Confluence_Grey.svg` }
-    ]
-    setProductList(fakeProducts);
-}, [host]);
+
+//   useEffect(() => {
+//     let fakeProducts = [
+//       // { name: `Confluence`, description: `Collaboration platform`, url: `https://confluence.il2.dso.mil/#all-updates`, icon_url: `${host}/images/Confluence.svg`, role: '/Platform One/Party Bus/IL2/IL2-Atlassian', icon_alt: 'Confluence', icon_grey_alt: 'Confluence_Grey', icon_url_grey: `${host}/images/Confluence_Grey.svg` }
+//     ]
+//     setProductList(fakeProducts);
+// }, [host]);
+
+useEffect(() => {
+  let fakeProducts = [
+    { name: `Horseman Light Roast`, description: `Pumpkin Spice`, icon_url: imageFiles[0], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Jack Medium Roast`, description: `Chocolate Hazelnut`, icon_url: imageFiles[1], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Sally Dark Roast`, description: `Toasted Marshmallow`, icon_url: imageFiles[2], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Horseman Light Roast`, description: `Pumpkin Spice`, icon_url: imageFiles[0], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Jack Medium Roast`, description: `Chocolate Hazelnut`, icon_url: imageFiles[1], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Sally Dark Roast`, description: `Toasted Marshmallow`, icon_url: imageFiles[2], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Horseman Light Roast`, description: `Pumpkin Spice`, icon_url: imageFiles[0], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Jack Medium Roast`, description: `Chocolate Hazelnut`, icon_url: imageFiles[1], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Sally Dark Roast`, description: `Toasted Marshmallow`, icon_url: imageFiles[2], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Horseman Light Roast`, description: `Pumpkin Spice`, icon_url: imageFiles[0], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Jack Medium Roast`, description: `Chocolate Hazelnut`, icon_url: imageFiles[1], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Sally Dark Roast`, description: `Toasted Marshmallow`, icon_url: imageFiles[2], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Horseman Light Roast`, description: `Pumpkin Spice`, icon_url: imageFiles[0], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Jack Medium Roast`, description: `Chocolate Hazelnut`, icon_url: imageFiles[1], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Sally Dark Roast`, description: `Toasted Marshmallow`, icon_url: imageFiles[2], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Horseman Light Roast`, description: `Pumpkin Spice`, icon_url: imageFiles[0], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Jack Medium Roast`, description: `Chocolate Hazelnut`, icon_url: imageFiles[1], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Sally Dark Roast`, description: `Toasted Marshmallow`, icon_url: imageFiles[2], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Horseman Light Roast`, description: `Pumpkin Spice`, icon_url: imageFiles[0], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Jack Medium Roast`, description: `Chocolate Hazelnut`, icon_url: imageFiles[1], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Sally Dark Roast`, description: `Toasted Marshmallow`, icon_url: imageFiles[2], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Horseman Light Roast`, description: `Pumpkin Spice`, icon_url: imageFiles[0], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Jack Medium Roast`, description: `Chocolate Hazelnut`, icon_url: imageFiles[1], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Sally Dark Roast`, description: `Toasted Marshmallow`, icon_url: imageFiles[2], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Horseman Light Roast`, description: `Pumpkin Spice`, icon_url: imageFiles[0], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Jack Medium Roast`, description: `Chocolate Hazelnut`, icon_url: imageFiles[1], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Sally Dark Roast`, description: `Toasted Marshmallow`, icon_url: imageFiles[2], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Horseman Light Roast`, description: `Pumpkin Spice`, icon_url: imageFiles[0], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Jack Medium Roast`, description: `Chocolate Hazelnut`, icon_url: imageFiles[1], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Sally Dark Roast`, description: `Toasted Marshmallow`, icon_url: imageFiles[2], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Horseman Light Roast`, description: `Pumpkin Spice`, icon_url: imageFiles[0], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Jack Medium Roast`, description: `Chocolate Hazelnut`, icon_url: imageFiles[1], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Sally Dark Roast`, description: `Toasted Marshmallow`, icon_url: imageFiles[2], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    // Add more products as needed
+  ];
+  setProductList(fakeProducts);
+}, []);
+
+useEffect(() => {
+  let fakePromotions = [
+    { name: `Horseman Light Roast`, description: `Pumpkin Spice`, icon_url: imageFiles[0], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+    { name: `Jack Medium Roast`, description: `Chocolate Hazelnut`, icon_url: imageFiles[1], amount: 12, rating: 2.5, subscription: true, price: 14.99 },
+     // Add more products as needed
+  ];
+  setPromotionsList(fakePromotions);
+}, []);
 
   const nextMonth = useMemo(() => {
     const now = new Date();
@@ -101,7 +153,8 @@ function AppProvider({ children }) {
     showLoginSuccess, 
     showCreateUserSuccess, 
     messageText, 
-    productList, 
+    productList,
+    promotionsList, 
     setUserData, 
     setUsername, 
     setPasswordRaw, 
@@ -112,7 +165,8 @@ function AppProvider({ children }) {
     setShowLoginSuccess, 
     setShowCreateUserSuccess, 
     setMessageText, 
-    setProductList
+    setProductList,
+    setPromotionsList
   };
 
   return (
